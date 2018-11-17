@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FCMTrialProject</string>
+    <string name="app_description">FCMTrialProject to send notification</string>
+</resources>
