@@ -11,6 +11,7 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -20,13 +21,10 @@ public class FcmMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        String title = remoteMessage.getNotification().getTitle();
-        String message = remoteMessage.getNotification().getBody();
 
         if (remoteMessage.getData() != null) {
-            Log.w("FCM_Data", String.valueOf(remoteMessage.getData()));
-            sendNotification(title, message);
-        } else if (remoteMessage.getNotification() != null) {
+            String title = remoteMessage.getData().get("title");
+            String message = remoteMessage.getData().get("body");
             sendNotification(title, message);
         }
     }
